@@ -1,0 +1,79 @@
+<html>
+	<head>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script src="d3.min.js"></script>
+		<script src="d3-legend.min.js"></script>
+		<link href="css/ilincs.css" rel="stylesheet">
+		<link href="css/AboutGRMetrics.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script>
+		function includeHTML(src,target) {
+		    $.get(src)
+		    .success(function(data) {
+			          $(target).html(data);
+		      });
+		  }
+		</script>
+    </head>
+    <body>
+	<div class=header></div>
+    <h2>General Information</h2> 
+    <hr>
+    <div class="col-sm-12">
+	  <style>.nav-tabs  li  a {font-size:16px; padding:10px 10px 10px 10px;} </style>
+
+<div class="tabbable tabs-above">
+  <ul class="nav nav-tabs shiny-tab-input" id="tabs">
+    <li class="active"> <a href="#tab-4581-1" data-toggle="tab" data-value="Introduction">Introduction</a> </li>
+    <li> <a href="#tab-4581-2" data-toggle="tab" data-value="AboutTraditional">About traditional metrics</a> </li>
+    <li> <a href="#tab-4581-3" data-toggle="tab" data-value="AboutGR">About GR metrics</a> </li>
+    <li> <a href="#tab-4581-4" data-toggle="tab" data-value="Exploration">Exploration tool</a> </li>
+    <li> <a href="#tab-4581-5" data-toggle="tab" data-value="GRCalculator">Online GR calculator</a> </li>
+    <li> <a href="#tab-4581-6" data-toggle="tab" data-value="Authors">Authors</a> </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" data-value="Introduction" id="tab-4581-1"><div class=tab1></div></div>
+    <div class="tab-pane" data-value="AboutTraditional"    id="tab-4581-2"><div class=tab2></div></div>
+    <div class="tab-pane" data-value="AboutGR"             id="tab-4581-3"><div class=tab3></div></div>
+    <div class="tab-pane" data-value="Exploration"         id="tab-4581-4">
+	<div class=tab4></div>
+	<div class=tab4-drc></div>
+	<div class=tab4-bottom></div>
+    </div>
+    <div class="tab-pane" data-value="GRCalculator"        id="tab-4581-5"><div class=tab5></div></div>
+    <div class="tab-pane" data-value="Authors"             id="tab-4581-6"><div class=tab6></div></div>
+  </div>
+</div> 
+
+    </div> 
+	    <script>
+    		<!-- displaying header -->
+    		includeHTML("html/nav.html", 'div.header')
+    		includeHTML("AboutGRMetrics-Introduction.html", 'div.tab1')
+    		includeHTML("AboutTraditional.html", 'div.tab2')
+    		includeHTML("AboutGR.html", 'div.tab3')
+    		includeHTML("Exploration-top.html", 'div.tab4')
+    		includeHTML("dose_response_curves.html", 'div.tab4-drc')
+    		includeHTML("Exploration-bottom.html", 'div.tab4-bottom')
+    		includeHTML("GRCalculator.html", 'div.tab5')
+    		includeHTML("Authors.html", 'div.tab6')
+
+		// Javascript to enable link to tab
+		var url = document.location.toString();
+		if (url.match('currTab=Explore')) {
+    			$('.nav-tabs a[href="#tab-4581-4"]').tab('show');
+			window.scrollTo(0, 0);
+		} 
+
+		// Change hash for page-reload
+		$('.nav-tabs a').on('shown.bs.tab', function (e) {
+    			window.location.hash = e.target.hash;
+			window.scrollTo(0, 0);
+		})
+	     </script>
+</body>
+</html>
